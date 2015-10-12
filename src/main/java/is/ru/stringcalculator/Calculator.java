@@ -3,6 +3,11 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 	public static int add(String text){
+		if(text.contains("//") && text.contains("\n")){
+			String[] delimiter = text.split("//|\n");
+			String[] numbers = delimiter[2].split(delimiter[1]);
+			return sum(numbers);
+		}
 		if(text.equals("")){
 			return 0;
 		}
