@@ -29,4 +29,13 @@ public class CalculatorTest {
     	assertEquals(6, Calculator.add("1,2,3"));
     }
 
+    @Test
+    public void testMultipleElements(){
+    	assertEquals(21, Calculator.add("1,2,3,4,5,6"));
+    }
+
+    @Test
+    public void testNewLine(){
+    	assertEquals(6, Calculator.add("1,2\n3"));
+    }
 }
