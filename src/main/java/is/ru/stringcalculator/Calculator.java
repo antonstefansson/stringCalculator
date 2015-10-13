@@ -4,9 +4,7 @@ public class Calculator {
 
 	public static int add(String text){
 		if(text.contains("//") && text.contains("\n")){
-			String[] delimiter = text.split("//|\n");
-			String[] numbers = delimiter[2].split(delimiter[1]);
-			return sum(numbers);
+			return sum(newDelimiter(text));
 		}
 		if(text.equals("")){
 			return 0;
@@ -23,17 +21,20 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    return numbers.split(",|\n");
+		return numbers.split(",|\n");
 	}
       
-    private static int sum(String[] numbers){
- 	    int total = 0;
-        for(String number : numbers){
+	private static int sum(String[] numbers){
+		int total = 0;
+		for(String number : numbers){
 		    total += toInt(number);
 		}
 		return total;
-    }
-
+	}
+	private static String[] newDelimiter(String text){
+		String[] delimiter = text.split("//|\n");
+		return delimiter[2].split(delimiter[1]);
+	}
 
 
 }
