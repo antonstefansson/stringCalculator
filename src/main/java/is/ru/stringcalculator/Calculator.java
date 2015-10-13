@@ -39,12 +39,8 @@ public class Calculator {
 				total += n;
 			}
 		}
-		String negatives = "Negatives not allowed: ";
 		if(!negativeList.isEmpty()){
-			for(int negative : negativeList){
-				negatives += negative + ", ";
-			}
-			throw new IllegalArgumentException(negatives);
+			throwException(negativeList);
 		}
 		return total;
 	}
@@ -53,5 +49,11 @@ public class Calculator {
 		return delimiter[2].split(delimiter[1]);
 	}
 
-
+	private static void throwException(List<Integer> negativeList){
+		String negatives = "Negatives not allowed: ";
+		for(int negative : negativeList){
+			negatives += negative + ", ";
+		}
+		throw new IllegalArgumentException(negatives);
+	}
 }
