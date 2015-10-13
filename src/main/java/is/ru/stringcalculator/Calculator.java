@@ -1,4 +1,6 @@
 package is.ru.stringcalculator;
+import java.util.*;
+import java.lang.IllegalArgumentException;
 
 public class Calculator {
 
@@ -26,8 +28,23 @@ public class Calculator {
       
 	private static int sum(String[] numbers){
 		int total = 0;
+		List<Integer> negativeList = new ArrayList<Integer>();
+		int n;
 		for(String number : numbers){
-		    total += toInt(number);
+			n = toInt(number);
+			if(n < 0){
+				negativeList.add(n);
+			}
+			else{
+				total += n;
+			}
+		}
+		String negatives = "Negatives not allowed: ";
+		if(!negativeList.isEmpty()){
+			for(int negative : negativeList){
+				negatives += negative + ", ";
+			}
+			throw new IllegalArgumentException(negatives);
 		}
 		return total;
 	}
